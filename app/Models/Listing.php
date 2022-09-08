@@ -1,32 +1,11 @@
-<?php  
-        namespace App\Models;
+<?php
 
-use PhpParser\Node\Stmt\Static_;
+namespace App\Models;
 
-        class Listing {
-                public static function all(){
-                        return [
-                                        [
-                                                "id"=>1,
-                                                "title"=>"First List",
-                                                "desc"=>"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum quidem dicta dolore hic expedita mollitia porro ipsam, modi, debitis odit magnam a quia reiciendis fugiat ducimus delectus. Voluptatum, saepe fuga.,"
-                                        ],
-                                        [
-                                                "id"=>2,
-                                                "title"=>"Second List",
-                                                "desc"=>"Rorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum quidem dicta dolore hic expedita mollitia porro ipsam, modi, debitis odit magnam a quia reiciendis fugiat ducimus delectus. Voluptatum, saepe fuga.,"
-                                        ]
-                                ];
-                }
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-                public static function find($id){
-                        $listings=self::all();
-                        
-                        foreach($listings as $item){
-                                if($item["id"]==$id){
-                                        return $item;
-                                }
-                        }
-                }
-        }
-?> 
+class Listing extends Model
+{
+    use HasFactory;
+}
