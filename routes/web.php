@@ -26,9 +26,9 @@ Route::get('/', function () {           //to view an html blade page
 
 
 //Single post
-Route::get("/listen/{id}",function($id){  
+Route::get("/listings/{listen}",function(Listing $listen){                                                //learn more about route model binding 
        return view("listen",[
-                "listen"=>Listing::find($id)
+                "listen"=>$listen
        ]) ;
 });
 

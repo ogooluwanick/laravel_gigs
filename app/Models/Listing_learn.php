@@ -22,9 +22,9 @@ use PhpParser\Node\Stmt\Static_;
                 public static function find($id){
                         $listings=self::all();
                         
-                        foreach($listings as $item){
-                                if($item["id"]==$id){
-                                        return $item;
+                        foreach($listings as $listen){
+                                if($listen["id"]==$id){
+                                        return $listen;
                                 }
                         }
                 }
