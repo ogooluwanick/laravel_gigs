@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,20 +18,11 @@ use App\Models\Listing;
 */
 
 //All posts 
-Route::get('/', function () {           //to view an html blade page
-    return view('listens',[
-        "heading"=>"Lastest Listings",
-        "listens"=>Listing::all()
-    ]);
-});
+Route::get('/',    [ListingController::class ,"index"]);
 
 
 //Single post
-Route::get("/listings/{listen}",function(Listing $listen){                                                //learn more about route model binding 
-       return view("listen",[
-                "listen"=>$listen
-       ]) ;
-});
+Route::get("/listings/{listen}", [ListingController::class,"show"]);
 
 
 
