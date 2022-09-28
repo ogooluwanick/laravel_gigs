@@ -9,6 +9,8 @@ class Listing extends Model
 {
     use HasFactory;
 
+//     protected $fillable=["title","company","location","website","email","tags","desc"];                 //to prevent fillable error when submitting forms 
+
     public function scopeFilter($query, array $filters){
         if($filters["tag"] ?? false){
                 $query->where("tags","like","%".request("tag")."%");
