@@ -23,7 +23,10 @@ Route::get('/',    [ListingController::class ,"index"]);
 //Show the form create()
 Route::get("/listings/create", [ListingController::class,"create"]);
 
-//Single post
+//Store Listing data from form            
+Route::post("/listings", [ListingController::class,"store"]);
+
+//Single post             //dynamic endpoints should be at the end
 Route::get("/listings/{listen}", [ListingController::class,"show"]);
 
 
