@@ -39,7 +39,7 @@ class ListingController extends Controller
             Listing::create($formFields);
 
 
-        return redirect("/")->with("message","Listing created successfully!");
+        return redirect("/")->with("message","Listing created successfully!");          // for flash message after redirect 
     }
 
     //Show single listing       show()
