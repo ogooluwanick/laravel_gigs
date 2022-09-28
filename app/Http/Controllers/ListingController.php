@@ -15,6 +15,11 @@ class ListingController extends Controller
                 "listens"=>Listing::latest()->filter(request(["tag","search"]))->get()
         ]);
     }
+    
+    //Show the form       create()
+    public function create(){
+        return view("listings.create") ;
+    }
 
     //Show single listing       show()
     public function show(Listing $listen){
@@ -22,4 +27,5 @@ class ListingController extends Controller
                 "listen"=>$listen
        ]) ;
     }
+
 }
