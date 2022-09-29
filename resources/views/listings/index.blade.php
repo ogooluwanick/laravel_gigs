@@ -10,6 +10,9 @@
                                 <x-listing-card :item="$item"/>                                                                {{--created a component  --}}
                         @endforeach
                 </div>
+                <div class="mt-6 p-4">
+                        {{$listens->links()}}
+                </div>
 </x-Layout>
 
 
