@@ -1,7 +1,19 @@
 @props(['tagsCsv'])
 
 @php
-        $tags=explode(",",$tagsCsv)
+        $tags=explode(",",$tagsCsv);
+
+
+        foreach($tags as $x=>$tag) {
+                $tags[$x]=trim($tags[$x]);
+                if($tag==""){
+                        unset($tags[$x]);
+                }
+        }       
+        if (end($tags) == "") { 
+                array_pop($tags); 
+        }
+        
 @endphp
 
 <ul class="flex">
