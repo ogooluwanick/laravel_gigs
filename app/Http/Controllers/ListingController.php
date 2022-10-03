@@ -47,6 +47,40 @@ class ListingController extends Controller
 
         return redirect("/")->with("message","Listing created successfully!");          // for flash message after redirect 
     }
+    
+//the form edit()
+public function edit(Listing $listen){
+        // dd($listen->title);
+        return  view("listings.edit",[
+                "listen"=>$listen
+        ]);
+}
+
+  //Show single listing       show()
+  public function update(Request $request,Listing $listen){
+        // dd($request->file("logo"));
+
+        $formFields = $request->validate([
+                'title' => 'required',
+                'company' => ['required'],
+                'location' => 'required',
+                'website' => 'required',
+                'email' => ['required', 'email'],
+                'tags' => 'required',
+                'desc' => 'required'
+            ]);
+
+            $formFields["tags"]=trim($formFields["tags"]);
+
+            if($request->hasFile("logo")){
+                $formFields["logo"]=$request->file("logo")->store("logos","public");
+            }
+
+            $listen->update($formFields);
+
+
+        return back()->with("message","Listing updated successfully!");          // for flash message after going back to previous page 
+    }
 
     //Show single listing       show()
     public function show(Listing $listen){

@@ -26,8 +26,16 @@ Route::get("/listings/create", [ListingController::class,"create"]);
 //Store Listing data from form            
 Route::post("/listings", [ListingController::class,"store"]);
 
+//the form edit()
+Route::get("/listings/{listen}/edit", [ListingController::class,"edit"]);
+
+//submit to update()
+Route::put("/listings/{listen}", [ListingController::class,"update"]);
+
 //Single post             //dynamic endpoints should be at the end
 Route::get("/listings/{listen}", [ListingController::class,"show"]);
+
+
 
 
 
