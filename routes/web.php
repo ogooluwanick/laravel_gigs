@@ -32,6 +32,9 @@ Route::get("/listings/{listen}/edit", [ListingController::class,"edit"]);
 //submit to update()
 Route::put("/listings/{listen}", [ListingController::class,"update"]);
 
+//DELETE listing to delete()
+Route::delete("/listings/{listen}", [ListingController::class,"delete"]);
+
 //Single post             //dynamic endpoints should be at the end
 Route::get("/listings/{listen}", [ListingController::class,"show"]);
 

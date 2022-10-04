@@ -48,14 +48,22 @@ class ListingController extends Controller
         return redirect("/")->with("message","Listing created successfully!");          // for flash message after redirect 
     }
     
-//the form edit()
-public function edit(Listing $listen){
-        // dd($listen->title);
-        return  view("listings.edit",[
-                "listen"=>$listen
-        ]);
-}
+    //the form edit()
+    public function edit(Listing $listen){
+            // dd($listen->title);
+            return  view("listings.edit",[
+                    "listen"=>$listen
+            ]);
+    }
+    
+    //Delete listing delete()
+    public function delete(Listing $listen){
+        //     dd($listen->title);
+            $listen->delete();
+            return redirect("/")->with("message","Listing deleted successfully!");          // for flash message after redirect 
 
+    }
+    
   //Show single listing       show()
   public function update(Request $request,Listing $listen){
         // dd($request->file("logo"));
