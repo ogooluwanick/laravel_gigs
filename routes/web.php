@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,11 @@ Route::delete("/listings/{listen}", [ListingController::class,"delete"]);
 //Single post             //dynamic endpoints should be at the end
 Route::get("/listings/{listen}", [ListingController::class,"show"]);
 
+//Show the Register Form create()
+Route::get("/register", [UserController::class,"create"]);
 
+//Create new user store()
+Route::post("/users", [UserController::class,"store"]);
 
 
 

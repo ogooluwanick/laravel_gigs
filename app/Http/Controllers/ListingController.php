@@ -22,7 +22,7 @@ class ListingController extends Controller
         return view("listings.create") ;
     }
 
-    //Show single listing       show()
+    //Store single listing       store()
     public function store(Request $request){
         // dd($request->file("logo"));
 
@@ -64,7 +64,7 @@ class ListingController extends Controller
 
     }
     
-  //Show single listing       show()
+  //Update single listing       update()
   public function update(Request $request,Listing $listen){
         // dd($request->file("logo"));
 
