@@ -14,6 +14,15 @@ class UserController extends Controller
                 return view("users.register") ;
             }
 
+            //Logout the User Form logout()
+        public function logout(Request $request){
+                auth()->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return redirect("/")->with("message","You have been logged out!");          
+            }
+
 
     //Store single user       store()
     public function store(Request $request){
