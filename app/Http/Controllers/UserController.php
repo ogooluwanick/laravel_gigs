@@ -14,6 +14,11 @@ class UserController extends Controller
                 return view("users.register") ;
             }
 
+             //Show the login Form login()
+        public function login(){
+                return view("users.login") ;
+            }
+
             //Logout the User Form logout()
         public function logout(Request $request){
                 auth()->logout();
@@ -22,7 +27,25 @@ class UserController extends Controller
 
                 return redirect("/")->with("message","You have been logged out!");          
             }
+        
+             //Login the User  auth()
+            public function auth(Request $request){
+                // dd($request);
+                $formFields = $request->validate([
+                        'email' => ['required', 'email'],
+                        'password' => 'required'
+                    ]);
+            
+                    if(auth()->attempt($formFields)) {
+                        $request->session()->regenerate();
 
+                        return redirect('/')->with('message', 'You are now logged in!');
+                    }
+                        // dd($request);
+            
+                        return redirect('/login')->with('message', 'Invalid Credentials');
+
+                }
 
     //Store single user       store()
     public function store(Request $request){

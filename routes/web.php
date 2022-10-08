@@ -48,6 +48,11 @@ Route::post("/logout", [UserController::class,"logout"]);
 //Create new user store()
 Route::post("/users", [UserController::class,"store"]);
 
+//Show Login form  (user) login()
+Route::get("/login", [UserController::class,"login"]);
+
+// Login user  (user) login()
+Route::post("/users/auth", [UserController::class,"auth"]);
 
 
 
