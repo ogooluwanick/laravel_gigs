@@ -22,34 +22,34 @@ use App\Models\Listing;
 Route::get('/',    [ListingController::class ,"index"]);
 
 //Show the form create()
-Route::get("/listings/create", [ListingController::class,"create"]);
+Route::get("/listings/create", [ListingController::class,"create"])->middleware("auth");
 
 //Store Listing data from form            
-Route::post("/listings", [ListingController::class,"store"]);
+Route::post("/listings", [ListingController::class,"store"])->middleware("auth");
 
 //the form edit()
-Route::get("/listings/{listen}/edit", [ListingController::class,"edit"]);
+Route::get("/listings/{listen}/edit", [ListingController::class,"edit"])->middleware("auth");
 
 //submit to update()
-Route::put("/listings/{listen}", [ListingController::class,"update"]);
+Route::put("/listings/{listen}", [ListingController::class,"update"])->middleware("auth");
 
 //DELETE listing to delete()
-Route::delete("/listings/{listen}", [ListingController::class,"delete"]);
+Route::delete("/listings/{listen}", [ListingController::class,"delete"])->middleware("auth");
 
 //Single post             //dynamic endpoints should be at the end
 Route::get("/listings/{listen}", [ListingController::class,"show"]);
 
 //Show the Register Form create()
-Route::get("/register", [UserController::class,"create"]);
+Route::get("/register", [UserController::class,"create"])->middleware("guest");
 
-//Logout user Form logou()
-Route::post("/logout", [UserController::class,"logout"]);
+//Logout user Form logout()
+Route::post("/logout", [UserController::class,"logout"])->middleware("auth");
 
 //Create new user store()
 Route::post("/users", [UserController::class,"store"]);
 
 //Show Login form  (user) login()
-Route::get("/login", [UserController::class,"login"]);
+Route::get("/login", [UserController::class,"login"])->name("login")->middleware("guest");
 
 // Login user  (user) login()
 Route::post("/users/auth", [UserController::class,"auth"]);
