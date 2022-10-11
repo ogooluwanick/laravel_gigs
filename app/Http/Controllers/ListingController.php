@@ -37,6 +37,7 @@ class ListingController extends Controller
             ]);
 
             $formFields["tags"]=trim($formFields["tags"]);
+            $formFields["user_id"]=auth()->id();
 
             if($request->hasFile("logo")){
                 $formFields["logo"]=$request->file("logo")->store("logos","public");
@@ -44,6 +45,7 @@ class ListingController extends Controller
 
             Listing::create($formFields);
 
+        //     dd(auth()->id());
 
         return redirect("/")->with("message","Listing created successfully!");          // for flash message after redirect 
     }

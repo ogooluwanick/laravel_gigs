@@ -59,7 +59,6 @@ Route::post("/users/auth", [UserController::class,"auth"]);
 
 
 
-
 // Route::get("/help",function(){                   //to view a plain returned text (can include html)
 //         return "<i>Hello sir</i>  ";
 // });
