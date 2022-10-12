@@ -21,6 +21,14 @@ class ListingController extends Controller
     public function create(){
         return view("listings.create") ;
     }
+   
+    //Manage Listings    manage()
+    public function manage(){
+        // dd(auth()->user()->listings()->get());
+        return view("listings.manage",[
+                "listings"=>auth()->user()->listings()->get()
+        ]) ;
+    }
 
     //Store single listing       store()
     public function store(Request $request){
