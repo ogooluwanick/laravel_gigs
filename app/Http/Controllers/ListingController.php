@@ -69,6 +69,9 @@ class ListingController extends Controller
     //Delete listing delete()
     public function delete(Listing $listen){
         //     dd($listen->title);
+                if($listen->user_id != auth()->id()){
+                        abort(403,"Unauthorized Action");
+                }
             $listen->delete();
             return redirect("/")->with("message","Listing deleted successfully!");          // for flash message after redirect 
 
@@ -77,6 +80,11 @@ class ListingController extends Controller
   //Update single listing       update()
   public function update(Request $request,Listing $listen){
         // dd($request->file("logo"));
+
+        //Make sure logged in user owns postt
+        if($listen->user_id != auth()->id()){
+                abort(403,"Unauthorized Action");
+        }
 
         $formFields = $request->validate([
                 'title' => 'required',
